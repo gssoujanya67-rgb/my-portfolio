@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soujanya GS — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EDEFE5;
+    --bg-card: #F7F8F1;
+    --ink: #1B2B21;
+    --ink-soft: #58604F;
+    --pine: #2F5233;
+    --gold: #B8862B;
+    --border: #D6D9C8;
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  ::selection { background: var(--gold); color: #fff; }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--pine);
+    text-transform: lowercase;
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    padding: 96px 0 72px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .hero-text { flex: 1; min-width: 0; }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 14px 0 18px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--pine);
+  }
+
+  .hero p.tagline {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+
+  .sprout {
+    flex-shrink: 0;
+    width: 140px;
+    height: 140px;
+  }
+
+  .sprout path, .sprout circle {
+    fill: none;
+    stroke: var(--pine);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: grow 1.8s ease-out forwards;
+  }
+
+  .sprout .seed {
+    stroke: var(--gold);
+    animation-delay: 0.1s;
+  }
+
+  .sprout .stem { animation-delay: 0.5s; }
+  .sprout .leaf-a { animation-delay: 1s; }
+  .sprout .leaf-b { animation-delay: 1.2s; }
+
+  @keyframes grow {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sprout path, .sprout circle {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* ---- Sections ---- */
+  section {
+    padding: 56px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  section h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    margin: 8px 0 28px;
+  }
+
+  /* ---- Roots (About) ---- */
+  .roots {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .portrait {
+    flex-shrink: 0;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 8px;
+  }
+
+  .roots p { max-width: 60ch; color: var(--ink-soft); }
+  .roots p + p { margin-top: 14px; }
+
+  /* ---- Growing (Projects) ---- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    border-color: var(--pine);
+    transform: translateY(-2px);
+  }
+
+  .stage {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(184, 134, 43, 0.1);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  .card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
+  .card a.project-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--pine);
+    text-decoration: none;
+    border-bottom: 1px solid var(--pine);
+  }
+
+  /* ---- Reach (Contact) ---- */
+  .reach-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .reach-list li {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .reach-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 4px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.15s ease;
+  }
+
+  .reach-list a:hover { color: var(--pine); }
+
+  .reach-list .arrow {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--ink-soft);
+    transition: transform 0.15s ease;
+  }
+
+  .reach-list a:hover .arrow { transform: translateX(4px); }
+
+  /* ---- Footer ---- */
+  footer {
+    padding: 32px 0 48px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .hero { flex-direction: column-reverse; padding-top: 56px; gap: 24px; }
+    .roots { flex-direction: column; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="hero-text">
+      <span class="label">planted on GitHub · <span id="date"></span></span>
+      <h1>Hi, I'm <em>Soujanya GS</em>.<br>This is where I grow.</h1>
+      <p class="tagline">Student, endlessly curious, and a little too enthusiastic about new things. This is my very first commit — everything starts small.</p>
+    </div>
+    <svg class="sprout" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A growing sprout illustration">
+      <circle class="seed" cx="70" cy="118" r="10"></circle>
+      <path class="stem" d="M70 118 C70 90 70 70 70 45"></path>
+      <path class="leaf-a" d="M70 70 C50 65 40 50 45 30 C65 35 72 50 70 70 Z"></path>
+      <path class="leaf-b" d="M70 60 C90 55 100 40 95 20 C75 25 68 40 70 60 Z"></path>
+    </svg>
+  </header>
+
+  <!-- ===== ROOTS / ABOUT ===== -->
+  <section class="roots-section">
+    <span class="label">roots</span>
+    <h2>About me</h2>
+    <div class="roots">
+      <div class="portrait">your photo here</div>
+      <div>
+        <p>Hi, I'm Soujanya — a student who's genuinely excited about learning new things, especially anything I haven't tried before. I tend to bring a lot of energy to whatever I'm working on.</p>
+        <p>This site is my first step into building and sharing things online. I don't have projects to show just yet, but that's about to change — check back soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GROWING / PROJECTS ===== -->
+  <section>
+    <span class="label">growing</span>
+    <h2>What I'm building</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="stage">seedling</span>
+        <h3>Nothing planted here yet</h3>
+        <p>My first project hasn't sprouted yet — I'm just getting started. Come back and see what's grown.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REACH / CONTACT ===== -->
+  <section>
+    <span class="label">reach</span>
+    <h2>Find me elsewhere</h2>
+    <ul class="reach-list">
+      <li><a href="mailto:you@example.com">Email <span class="arrow">→</span></a></li>
+      <li><a href="https://github.com/gssoujanya67-rgb" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a></li>
+      <li><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Soujanya GS · built line by line</span>
+    <span id="year"></span>
+  </footer>
+
+</div>
+
+<script>
+  const now = new Date();
+  document.getElementById('date').textContent = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  document.getElementById('year').textContent = now.getFullYear();
+</script>
+
+</body>
+</html>
